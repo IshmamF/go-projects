@@ -4,10 +4,10 @@ import (
 	"fmt"
 )
 
-func Score(record [][]string) (score int) {
+func Score(record [][]string, limit int) (score int) {
 	score = 0
 
-	for i := 1; i < len(record); i++ {
+	for i := 0; i < limit; i++ {
 		var userAmswer string
 		answer := record[i][1]
 		question := record[i][0]

@@ -1,23 +1,24 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"go-projects/quizGame/read"
 	"go-projects/quizGame/quiz"
+	"go-projects/quizGame/read"
 )
 
 var (
 	filepath = "problems.csv"
-	score int
+	score    int
 )
-
 
 func main() {
 	record, err := read.ReadCSV(filepath)
 	if err != nil {
 		fmt.Println(err)
-	} 
-
-	score = quiz.Score(record)
-	fmt.Println("Your score is", score, "out of", len(record) - 1)
+	}
+	limit := flag.Int("limit", len(record), "Number of questions to be asked")
+	flag.Parse()
+	score = quiz.Score(record, *limit)
+	fmt.Println("Your score is", score, "out of", *limit)
 }
