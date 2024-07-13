@@ -18,7 +18,7 @@ func main() {
 		fmt.Println(err)
 	}
 	limit := flag.Int("limit", len(record), "Number of questions to be asked")
+	timer := flag.Int("time", 30, "Time limit on answering questions in seconds")
 	flag.Parse()
-	score = quiz.Score(record, *limit)
-	fmt.Println("Your score is", score, "out of", *limit)
+	score = quiz.Score(record, *limit, *timer)
 }
